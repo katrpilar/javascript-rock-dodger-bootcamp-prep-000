@@ -60,7 +60,9 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
-     
+     if (checkCollision(rock)){
+       return endGame();
+     } 
      
      function step() {
         rock.style.top = `${top += 2}px`
@@ -69,9 +71,6 @@ function createRock(x) {
           window.requestAnimationFrame(step)
         } else {
           GAME.remove(rock);
-          if (checkCollision(rock)){
-             return endGame();
-           } 
         }
       }
       
@@ -141,7 +140,7 @@ function moveDodgerLeft() {
   
   function step() {
     if (dodgerLeftEdge > 0) {
-      DODGER.style.left = `${dodgerLeftEdge -= 4}px`
+      dodger.style.left = `${dodgerLeftEdge -= 4}px`
     }
   }
   window.requestAnimationFrame(step);
@@ -157,8 +156,8 @@ function moveDodgerRight() {
   
   function step() {
      
-    if (dodgerLeftEdge < 360) {
-      DODGER.style.left = `${dodgerLeftEdge += 4}px`
+    if (dodgerRightEdge < 360) {
+      dodger.style.left = `${dodgerLeftEdge += 4}px`
     }
   }
   window.requestAnimationFrame(step)
